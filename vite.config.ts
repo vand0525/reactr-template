@@ -1,14 +1,15 @@
-import { defineConfig } from 'vite'
-import react, { reactCompilerPreset } from '@vitejs/plugin-react'
-import babel from '@rolldown/plugin-babel'
+import { defineConfig, loadEnv } from 'vite';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
 
-const BASE_URL = process.env.BASE_URL ?? '/'
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
 
-export default defineConfig({
-  plugins: [
-    react(),
-    babel({ presets: [reactCompilerPreset()] })
-  ],
-
-  base: BASE_URL
-})
+  return {
+    plugins: [
+      react(),
+      babel({ presets: [reactCompilerPreset()] }),
+    ],
+    base: env.BASE_URL || '/',
+  };
+});
