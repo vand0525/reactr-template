@@ -1,7 +1,3 @@
-Here is a complete, cleaner README that explains the **architecture, CLI behavior, modules, and styling conventions** accurately.
-
----
-
 # Reactr Template
 
 A React + Vite template built around **feature-based architecture** and **automatic route generation**.
