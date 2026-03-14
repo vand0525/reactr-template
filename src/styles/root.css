@@ -1,0 +1,21 @@
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--color-page);
+	color: var(--color-on-bg);
+	font-family: var(--font-family-sans);
+	line-height: var(--line-height-normal);
+}
+
+#root {
+	width: min(100%, var(--app-max-width));
+	margin-inline: auto;
+	padding-inline: var(--layout-gutter);
+	display: flex;
+	flex-direction: column;
+}

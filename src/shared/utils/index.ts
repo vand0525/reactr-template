@@ -1,0 +1,1 @@
+export {resolveSpaceToken} from './resolveToken';

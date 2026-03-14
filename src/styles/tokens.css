@@ -1,0 +1,59 @@
+:root {
+  /* spacing scale */
+  --space-1: 0.25rem;  /* 4px  */
+  --space-2: 0.5rem;   /* 8px  */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+
+  /* typography */
+  --font-family-sans: system-ui, sans-serif;
+  --font-family-mono: ui-monospace, monospace;
+
+  /* layout */
+  --app-max-width: 1200px;
+  --layout-gutter: var(--space-4);
+
+  /* reference palette */
+  --ref-neutral-10: #111318;
+  --ref-neutral-20: #1a1d24;
+  --ref-neutral-30: #232733;
+  --ref-neutral-40: #2c3140;
+  --ref-neutral-90: #e4e7ee;
+  --ref-neutral-100: #ffffff;
+
+  --ref-primary-20: #0f2f57;
+  --ref-primary-40: #2f6db3;
+  --ref-primary-90: #d6e4ff;
+
+  /* semantic roles */
+
+  /* app canvas */
+  --color-page: var(--ref-neutral-10);
+  --color-on-page: var(--ref-neutral-90);
+
+  /* main page surface */
+  --color-bg: var(--ref-neutral-20);
+  --color-on-bg: var(--ref-neutral-90);
+
+  /* cards / panels */
+  --color-surface: var(--ref-neutral-30);
+  --color-on-surface: var(--ref-neutral-90);
+
+  /* elevated UI */
+  --color-surface-alt: var(--ref-neutral-40);
+  --color-on-surface-alt: var(--ref-neutral-90);
+
+  /* primary action */
+  --color-primary: var(--ref-primary-40);
+  --color-on-primary: var(--ref-neutral-100);
+
+  --color-primary-container: var(--ref-primary-90);
+  --color-on-primary-container: var(--ref-primary-20);
+
+  /* structural */
+  --color-border: var(--ref-neutral-30);
+}
