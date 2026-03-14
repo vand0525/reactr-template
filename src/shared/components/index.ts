@@ -1,4 +1,4 @@
-export { Header } from './page/Header';
-export { Footer } from './page/Footer';
+export { Header } from './Header';
+export { Footer } from './Footer';
 export { VStack } from './layout/VStack';
 export { HStack } from './layout/HStack';
