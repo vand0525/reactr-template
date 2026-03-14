@@ -1,7 +1,8 @@
 # Reactr Template
 
-## Setup
+## New project checklist
 
-1. Rename package in package.json
-2. Update HTML title
-3. Set BASE_URL if deploying to GitHub Pages
+- Rename `package.json` name
+- Update `index.html` title
+- Set `BASE_URL` for deployment if needed
+- Update README heading and project description
