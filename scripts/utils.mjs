@@ -8,7 +8,10 @@ export function ensureDirExists(dirPath, errorMessage) {
   }
 }
 
-export function ensureDoesNotExist(targetPath, errorMessage) {
+export function ensureDoesNotExist(
+  targetPath,
+  errorMessage,
+) {
   if (fs.existsSync(targetPath)) {
     console.error(errorMessage);
     process.exit(1);
@@ -121,7 +124,10 @@ export function featurePageCss() {
 }
 
 export function reactorConfigPath() {
-  return path.resolve(process.cwd(), 'reactor.config.js');
+  return path.resolve(
+    process.cwd(),
+    'src/reactr.config.ts',
+  );
 }
 
 export function readReactorConfig() {
@@ -137,12 +143,12 @@ export function readReactorConfig() {
   const file = fs.readFileSync(configPath, 'utf8');
 
   const rootMatch = file.match(
-    /rootFeature:\s*(null|"[^"]+")/,
+    /rootFeature:\s*(null|"[^"]*"|'[^']*')/,
   );
 
   const rootFeature =
     rootMatch && rootMatch[1] !== 'null'
-      ? rootMatch[1].replace(/"/g, '')
+      ? rootMatch[1].replace(/['"]/g, '')
       : null;
 
   const featuresMatch = file.match(
@@ -178,7 +184,12 @@ export function reactorConfigFile(rootFeature, features) {
     (feature) => `    "${feature}"`,
   );
 
-  return `export const reactorConfig = {
+  return `export type ReactorConfig = {
+  rootFeature: string | null;
+  features: string[];
+};
+
+export const reactorConfig: ReactorConfig = {
   rootFeature: ${rootFeature ? `"${rootFeature}"` : 'null'},
   features: [
 ${featureLines.join(',\n')}
@@ -206,6 +217,11 @@ export function registerFeature(
 
   if (setRoot) {
     config.rootFeature = featureName;
+  }
+
+  // if no root exists yet, first feature becomes root
+  if (!config.rootFeature && config.features.length > 0) {
+    config.rootFeature = config.features[0];
   }
 
   writeReactorConfig(config.rootFeature, config.features);
@@ -284,7 +300,20 @@ export const router = createBrowserRouter(
           index: true,
           element: (
             <div>
-              Remove placeholder from /src/app/Router.tsx
+              <h2>No features yet</h2>
+              <p>
+                This project uses the Reactr CLI to generate features and routes automatically.
+              </p>
+              <p>
+                Run <code>reactr add &lt;feature-name&gt;</code> to create a new feature.  
+                The CLI will scaffold the folder, update the router, and register it in the config.
+              </p>
+              <p>
+                You can remove features with <code>reactr delete &lt;feature-name&gt;</code>.
+              </p>
+              <p>
+                Shared UI such as navigation and layout components can be edited in <code>src/shared</code>.
+              </p>
             </div>
           ),
         },

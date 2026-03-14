@@ -13,9 +13,14 @@ body {
 }
 
 #root {
+	background: var(--color-bg);
 	width: min(100%, var(--app-max-width));
 	margin-inline: auto;
 	padding-inline: var(--layout-gutter);
 	display: flex;
 	flex-direction: column;
+}
+
+main {
+	flex-grow: 1;
 }

@@ -1,13 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import { Footer, Header } from '../shared';
+import { Footer, Header, VStack } from '../shared';
 
 export function App() {
   return (
     <>
       <Header />
-      <main>
+      <VStack tag='main' alignment='center' justify='center'>
         <Outlet />
-      </main>
+      </VStack>
       <Footer />
     </>
   );

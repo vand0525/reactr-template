@@ -10,7 +10,11 @@ export type LayoutTag =
   | 'span'
   | 'aside'
   | 'section'
-  | 'article';
+  | 'article'
+  | 'nav'
+  | 'main'
+  | 'header'
+  | 'footer';
 
 export type LayoutAlignment =
   | 'start'

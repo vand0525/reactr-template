@@ -1,0 +1,11 @@
+.root {
+  padding: var(--space-4);
+  border: 2px solid var(--color-on-bg);
+  margin-block-start: var(--space-4);
+  
+  a {
+    color: var(--color-on-bg);
+    font-size: 1.2rem;
+    text-decoration-thickness: 4px;
+  }
+}

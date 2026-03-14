@@ -4,5 +4,5 @@ import styles from './Footer.module.css';
 // };
 
 export function Footer(/*{}: FooterProps*/) {
-  return <div className={styles.root}>Edit <strong>Footer.tsx</strong> at <strong>/src/shared/components/Footer/</strong></div>;
+  return <footer className={styles.root}>Edit <strong>Footer.tsx</strong> at <strong>/src/shared/components/Footer/</strong></footer>;
 }
