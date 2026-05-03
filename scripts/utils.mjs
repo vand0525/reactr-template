@@ -108,7 +108,7 @@ export function featurePage(featureName) {
 
 export function ${componentName}Page() {
   return (
-    <div className={styles.root}>
+    <div className={styles.container}>
       ${componentName} Page
     </div>
   );
@@ -117,8 +117,32 @@ export function ${componentName}Page() {
 }
 
 export function featurePageCss() {
-  return `.root {
+  return `.container {
 
+}
+`;
+}
+
+export function hookTs(name) {
+  const hookName = name.startsWith('use')
+    ? name
+    : `use${name}`;
+
+  return `
+import { useState } from 'react';
+
+type ${hookName}Return = {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export function ${hookName}(): ${hookName}Return {
+  const [value, setValue] = useState('');
+
+  return {
+    value,
+    setValue,
+  };
 }
 `;
 }
