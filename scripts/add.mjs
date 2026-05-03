@@ -92,10 +92,7 @@ export function registerAddCommands(program) {
         const sectionDir = path.join(featureDir, dir);
 
         makeDir(sectionDir);
-        writeFile(
-          path.join(sectionDir, 'index.ts'),
-          '',
-        );
+        writeFile(path.join(sectionDir, 'index.ts'), '');
 
         if (dir === 'pages') {
           writeFile(
@@ -137,8 +134,7 @@ export function registerAddCommands(program) {
           process.cwd(),
           'src/shared/components',
         );
-        displayTarget =
-          'src/shared/components';
+        displayTarget = 'src/shared/components';
       } else {
         const featureDir = path.resolve(
           process.cwd(),
@@ -163,10 +159,7 @@ export function registerAddCommands(program) {
         `Error: '${displayTarget}' does not exist`,
       );
 
-      const componentDir = path.join(
-        resolvedTarget,
-        name,
-      );
+      const componentDir = path.join(resolvedTarget, name);
 
       ensureDoesNotExist(
         componentDir,
@@ -187,10 +180,7 @@ export function registerAddCommands(program) {
 
       if (options.css) {
         writeFile(
-          path.join(
-            componentDir,
-            `${name}.module.css`,
-          ),
+          path.join(componentDir, `${name}.module.css`),
           componentCss(),
         );
       }
@@ -200,3 +190,39 @@ export function registerAddCommands(program) {
       );
     });
 }
+// add
+//   .command('component')
+//   .description('Create a component scaffold')
+//   .argument('<name>', 'component name')
+//   .argument('<target>', 'shared or feature name')
+//   .option('--no-css', 'disable css module')
+//   .action((name, target, options) => {
+
+add
+  .command('hook')
+  .description('add a shared hook scaffold')
+  .argument('<name>', 'hook name')
+  .action((name) => {
+    const displayPath = 'src/shared/hooks';
+    let directoryPath;
+
+    directoryPath = path.resolve(
+      process.cwd(),
+      displayPath,
+    );
+
+    ensureDirExists(
+      directoryPath,
+      `Error: ${displayPath} does not exist`,
+    );
+
+    const fileToWrite = `${directoryPath}/${name}.ts`;
+
+    ensureDoesNotExist(
+      fileToWrite, `Error: ${name} is already in ${displayPath}`
+    )
+
+    console.log(
+      `Created component: ${displayPath}/${name}`
+    )
+  });

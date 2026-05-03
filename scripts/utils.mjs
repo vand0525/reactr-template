@@ -50,7 +50,7 @@ export function componentTsx(name, useCss) {
     : '';
 
   const className = useCss
-    ? ` className={styles.root}`
+    ? ` className={styles.container}`
     : '';
 
   return `${cssImport}type ${name}Props = {
@@ -63,7 +63,7 @@ export function ${name}({}: ${name}Props) {
 }
 
 export function componentCss() {
-  return `.root {
+  return `.container {
 
 }
 `;
