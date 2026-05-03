@@ -147,6 +147,12 @@ export function ${hookName}(): ${hookName}Return {
 `;
 }
 
+export function hookIndex(name) {
+  const hookName = name.startsWith('use');
+
+  return `export {${hookName}} from "./${hookName}";`
+}
+
 export function reactorConfigPath() {
   return path.resolve(
     process.cwd(),

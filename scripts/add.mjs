@@ -10,6 +10,7 @@ import {
   featureRootIndex,
   featureShell,
   featureShellCss,
+  hookIndex,
   hookTs,
   makeDir,
   registerFeature,
@@ -18,6 +19,7 @@ import {
   writeFile,
   writeRouter,
 } from './utils.mjs';
+import { write } from 'node:fs';
 
 export function registerAddCommands(program) {
   const add = program.command('add');
@@ -204,6 +206,8 @@ export function registerAddCommands(program) {
         displayPath,
       );
 
+      const indexPath = `${directoryPath}/index.ts`
+
       ensureDirExists(
         directoryPath,
         `Error: ${displayPath} does not exist`,
@@ -216,10 +220,11 @@ export function registerAddCommands(program) {
         `Error: ${name} is already in ${displayPath}`,
       );
 
-      writeFile(fileToWrite, hookTs());
+      writeFile(fileToWrite, hookTs(name));
+      write(indexPath, hookIndex(name));
 
       console.log(
-        `Created component: ${displayPath}/${name}.ts`,
+        `Created hook: ${displayPath}/${name}.ts`,
       );
     });
 }
